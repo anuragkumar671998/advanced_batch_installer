@@ -1,0 +1,66 @@
+Usage Instructions:
+1. Make the script executable:
+bash
+chmod +x background_installer.py
+2. Start the background process:
+bash
+sudo ./background_installer.py start
+It will ask for confirmation and then run in the background.
+
+3. Check status anytime:
+bash
+./background_installer.py status
+Shows if it's running and displays the last 10 log lines.
+
+4. Stop the process:
+bash
+./background_installer.py stop
+Gracefully stops the installation.
+
+5. View help:
+bash
+./background_installer.py help
+Features:
+Auto-background: Automatically daemonizes and runs in background
+
+Process Management: PID file for tracking running instance
+
+Graceful Shutdown: Can be stopped anytime with ./script.py stop
+
+Status Monitoring: Check progress anytime
+
+Comprehensive Logging: All activities logged to /tmp/background_batch_installer.log
+
+No Terminal Required: Runs completely independently
+
+Safety Features:
+
+Checks for existing instances
+
+Handles signals properly
+
+Cleans up PID file on exit
+
+Timeouts on all operations
+
+Breaks delays to check for shutdown
+
+Files Created:
+/tmp/background_batch_installer.pid - Process ID file
+
+/tmp/background_batch_installer.log - Log file
+
+Monitoring:
+bash
+# Watch the log in real-time
+tail -f /tmp/background_batch_installer.log
+
+# Check system resources
+htop
+
+# Check disk space
+df -h
+
+# Check if process is running
+ps aux | grep background_installer
+The script will run completely in the background and continue until all batches are processed or until you stop it manually. It's perfect for running unattended for several hours while you use your system for other tasks.
